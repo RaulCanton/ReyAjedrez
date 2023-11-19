@@ -19,4 +19,9 @@ public class Posicion {
             throw new IllegalArgumentException("La columna introducida no es valida");
     }
 
+    public Posicion(int fila,char columna){
+        setFila(fila);
+        setColumna(columna);
+
+    }
 }
