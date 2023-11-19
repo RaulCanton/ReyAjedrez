@@ -49,7 +49,11 @@ public class Rey {
         if (direccion==Direccion.NOROESTE && posicion.equals(new Posicion(1,'a')){
            throw new OperationNotSupportedException("Este movimiento no se puede realizar. ");
         }
+
+        else {
+        }
     }
+
 
     @Override
     public String toString (){
