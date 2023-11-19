@@ -1,11 +1,13 @@
 package org.iesalandalus.programacion.reyajedrez.modelo;
 
 public enum Direccion {
-    NORTE, NORESTE, ESTE, SURESTE, SUR, SUROESTE, OESTE, NOROESTE, ENROQUE_CORTO, ENROQUE_LARGO;
+    NORTE("Norte"), NORESTE("Noreste"), ESTE("Este"), SURESTE("Sureste"), SUR("Sur"),
+    SUROESTE("Suroeste"), OESTE("Oeste"), NOROESTE("Noroeste"),
+    ENROQUE_CORTO("Enroque_Corto"), ENROQUE_LARGO("Enroque_Largo");
 
     private String cadenaAMostrar;
 
-    private String Direccion(String cadenaAMostrar){
+    private Direccion(String cadenaAMostrar){
         this.cadenaAMostrar=cadenaAMostrar;
     }
 
