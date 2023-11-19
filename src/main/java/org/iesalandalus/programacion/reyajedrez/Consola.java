@@ -44,4 +44,26 @@ public class Consola {
         }
     }
 
+    public static void mostrarMenuDirecciones(){
+        System.out.println("Elige una opción para mover el rey;");
+        System.out.println("1 - NORTE");
+        System.out.println("2 - NOROESTE");
+        System.out.println("3 - ESTE");
+        System.out.println("4 - SURESTE");
+        System.out.println("5 - SUR");
+        System.out.println("6 - SUROESTE");
+        System.out.println("7 - OESTE");
+        System.out.println("8 - NOROESTE");
+        System.out.println("9 - ENROQUE_CORTO");
+        System.out.println("10 - ENROQUE_LARGO");
+    }
+
+    public static void elegirDireccion(int opcion){
+    opcion=0;
+        while (opcion<1 && opcion>10){
+            System.out.println("Elige una opción: ");
+    }
+
+
+        }
 }
