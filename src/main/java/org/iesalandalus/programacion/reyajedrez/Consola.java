@@ -58,12 +58,17 @@ public class Consola {
         System.out.println("10 - ENROQUE_LARGO");
     }
 
-    public static void elegirDireccion(int opcion){
-    opcion=0;
-        while (opcion<1 && opcion>10){
+    public static void elegirDireccion(int opcion) {
+        opcion = 0;
+        while (opcion < 1 && opcion > 10) {
             System.out.println("Elige una opción: ");
+        }
+
+
     }
 
+    public static void despedirse(){
+         System.out.println("Hasta pronto.");
 
-        }
+    }
 }
