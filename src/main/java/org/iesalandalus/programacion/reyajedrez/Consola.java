@@ -16,7 +16,7 @@ public class Consola {
         System.out.println("4 - Salir.");
     }
 
-    public static void elegirOpcion(int opcion){
+    public static void elegirOpcionMenu(int opcion){
         opcion=0;
         while (opcion < 1 && opcion >4) {
             System.out.println("Elige una opción del menú.");
@@ -34,6 +34,13 @@ public class Consola {
             if (opcion == 4) {
                 System.out.println("Has elegido: 4 - Salir.");
             }
+        }
+    }
+    public static void elegirColor(String color){
+        color="rojo";
+        while (color !="Blanco" && color != "Negro") {
+            System.out.println("Elige un color: Blanco o Negro?:");
+            color = Entrada.cadena();
         }
     }
 
