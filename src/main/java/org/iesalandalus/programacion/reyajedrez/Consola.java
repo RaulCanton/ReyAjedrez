@@ -18,8 +18,23 @@ public class Consola {
 
     public static void elegirOpcion(int opcion){
         opcion=0;
-        while (opcion !=1 || opcion !=2 ||opcion !=3 ||opcion !=4 ||)
-        System.out.println("Elige una opción del menú.");
-        opcion=Entrada.entero();
+        while (opcion < 1 && opcion >4) {
+            System.out.println("Elige una opción del menú.");
+            opcion = Entrada.entero();
+
+            if (opcion == 1) {
+                System.out.println("Has elegido: 1 - Crear Rey por defecto.");
+            }
+            if (opcion == 2) {
+                System.out.println("Has elegido: 2 - Crear Rey eligiendo color.");
+            }
+            if (opcion == 3) {
+                System.out.println("Has elegido: 3 - Mover.");
+            }
+            if (opcion == 4) {
+                System.out.println("Has elegido: 4 - Salir.");
+            }
+        }
     }
+
 }
