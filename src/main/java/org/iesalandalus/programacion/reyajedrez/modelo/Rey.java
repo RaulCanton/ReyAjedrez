@@ -1,6 +1,9 @@
 package org.iesalandalus.programacion.reyajedrez.modelo;
 
 import javax.naming.OperationNotSupportedException;
+import org.iesalandalus.programacion.reyajedrez.modelo.Posicion;
+import org.iesalandalus.programacion.reyajedrez.modelo.Color;
+import org.iesalandalus.programacion.reyajedrez.modelo.Direccion;
 
 public class Rey {
 
@@ -40,7 +43,7 @@ public class Rey {
         }
     }
 
-    public mover (Direccion direccion) throw OperationNotSupportedException{
+    public mover (Direccion direccion){
 
         if (direccion==null){
             throw new IllegalArgumentException("La posición no es valida");
