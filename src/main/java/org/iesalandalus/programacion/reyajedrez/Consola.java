@@ -68,7 +68,7 @@ public class Consola {
         System.out.println("10 - ENROQUE_LARGO");
     }
 
-    public void elegirDireccion(int opcion) throws OperationNotSupportedException {
+    public static void elegirDireccion(int opcion) throws OperationNotSupportedException {
         do {
             System.out.println("Elige una opción: ");
             opcion=Entrada.entero();
