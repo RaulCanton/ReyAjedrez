@@ -29,19 +29,19 @@ public class Consola {
 
             if (opcion == 1) {
                 System.out.println("Has elegido: 1 - Crear Rey por defecto.");
-                new Rey();
+               // new Rey();
             }
             if (opcion == 2) {
                 System.out.println("Has elegido: 2 - Crear Rey eligiendo color.");
-                elegirColor();
+                //elegirColor();
             }
             if (opcion == 3) {
                 System.out.println("Has elegido: 3 - Mover.");
-                elegirDireccion();
+                //elegirDireccion();
             }
             if (opcion == 4) {
                 System.out.println("Has elegido: 4 - Salir.");
-                despedirse();
+               // despedirse();
             }
         }
     }

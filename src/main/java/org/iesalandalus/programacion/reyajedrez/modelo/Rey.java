@@ -124,10 +124,10 @@ public class Rey {
         if (nuevaFila < 1 || nuevaFila > 8 || nuevaColumna < 'a' || nuevaColumna > 'h' || nuevaColumnaNumCorto < 'a' || nuevaColumnaNumLargo > 'h') {
             throw new OperationNotSupportedException("Este movimiento no se puede realizar. ");
         }
-        else throw new OperationNotSupportedException("El ")
-        //if ( posicion = new Posicion(nuevaFila, nuevaColumna);){
-         //   totalMovimientos = totalMovimientos + 1;
-       // }
+
+        if (posicion = new Posicion(posicion.getFila(), posicion.getColumna());{
+           totalMovimientos = totalMovimientos + 1;
+        }
 
     }
     @Override
