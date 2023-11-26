@@ -69,43 +69,40 @@ public class Consola {
     }
 
     public void elegirDireccion(int opcion) throws OperationNotSupportedException {
-
-
-        opcion = 0;
-        while (opcion < 1 && opcion > 10) {
+        do {
             System.out.println("Elige una opción: ");
             opcion=Entrada.entero();
             if (opcion==1){
                 Rey.mover(direccion.NORTE);
             }
             if (opcion==2){
-                mover(direccion.NORESTE);
+                Rey.mover(direccion.NORESTE);
             }
             if (opcion==3){
-                mover(direccion.ESTE);
+                Rey.mover(direccion.ESTE);
             }
             if (opcion==4){
-                mover(direccion.SURESTE);
+                Rey.mover(direccion.SURESTE);
             }
             if (opcion==5){
-                mover(direccion.SUR);
+                Rey.mover(direccion.SUR);
             }
             if (opcion==6){
-                mover(direccion.SUROESTE);
+                Rey.mover(direccion.SUROESTE);
             }
             if (opcion==7){
-                mover(direccion.OESTE);
+                Rey.mover(direccion.OESTE);
             }
             if (opcion==8){
-                mover(direccion.NOROESTE);
+                Rey.mover(direccion.NOROESTE);
             }
             if (opcion==9){
-                mover(direccion.ENROQUE_CORTO);
+                Rey.mover(direccion.ENROQUE_CORTO);
             }
             if (opcion==10){
-                mover(direccion.ENROQUE_LARGO);
+                Rey.mover(direccion.ENROQUE_LARGO);
             }
-        }
+        } while (opcion < 1 && opcion > 10);
     }
     public static void despedirse(){
 

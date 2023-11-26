@@ -10,22 +10,21 @@ public class MainApp {
 
         Rey rey;
 
-
-        private static void ejecutarOpcion ( int opcion){
-            mostrarMenu();
-            elegirOpcionMenu();
+        private static void ejecutarOpcion(int opcion){
+            Consola.mostrarMenu();
+            Consola.elegirOpcionMenu(opcion);
         }
 
-        private static void crearReyDefecto () {
-            new Rey();
+        private static void crearReyDefecto() {
+            Rey = new Rey();
         }
 
         private static void mover(){
-            mostrarMenuDireccione();
-            elegirDireccion();
+            Consola.mostrarMenuDirecciones();
+            Consola.elegirDireccion();
         }
 
-        private static void(){
+        private static void mostrarRey(){
             Rey.toString();
 
         }

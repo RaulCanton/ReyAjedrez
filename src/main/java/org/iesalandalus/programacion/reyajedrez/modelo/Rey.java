@@ -83,19 +83,51 @@ public class Rey {
         }
 
         if (direccion == Direccion.ENROQUE_CORTO) {
-            posicion = new Posicion(nuevaFila, (char) nuevaColumnaNumCorto);
-        }
-        if (direccion == Direccion.ENROQUE_LARGO) {
-            posicion = new Posicion(nuevaFila, (char) nuevaColumnaNumLargo);
+            if (totalMovimientos == 0) {
+                if (color == Color.BLANCO) {
+                    posicion = new Posicion(1, 'g');
+                }
+            } else {
+                throw new OperationNotSupportedException("El enroque no valido");
+            }
         }
 
+        if (direccion == Direccion.ENROQUE_LARGO) {
+            if (totalMovimientos == 0){
+                if (color == Color.BLANCO) {
+                    posicion = new Posicion(1, 'c');
+                }
+            } else {
+            throw new OperationNotSupportedException("El enroque no valido");
+                }
+        }
+
+        if (direccion == Direccion.ENROQUE_CORTO) {
+            if (totalMovimientos == 0) {
+                if (color == Color.NEGRO) {
+                    posicion = new Posicion(8, 'g');
+                }
+            } else {
+                throw new OperationNotSupportedException("El enroque no valido");
+            }
+        }
+
+        if (direccion == Direccion.ENROQUE_LARGO) {
+            if (totalMovimientos == 0) {
+                if (color == Color.NEGRO) {
+                    posicion = new Posicion(8, 'c');
+                }
+            } else {
+                throw new OperationNotSupportedException("El enroque no valido");
+            }
+        }
         if (nuevaFila < 1 || nuevaFila > 8 || nuevaColumna < 'a' || nuevaColumna > 'h' || nuevaColumnaNumCorto < 'a' || nuevaColumnaNumLargo > 'h') {
             throw new OperationNotSupportedException("Este movimiento no se puede realizar. ");
         }
-
-        if ( posicion = new Posicion(nuevaFila, nuevaColumna);){
-            totalMovimientos = totalMovimientos + 1;
-        }
+        else throw new OperationNotSupportedException("El ")
+        //if ( posicion = new Posicion(nuevaFila, nuevaColumna);){
+         //   totalMovimientos = totalMovimientos + 1;
+       // }
 
     }
     @Override
