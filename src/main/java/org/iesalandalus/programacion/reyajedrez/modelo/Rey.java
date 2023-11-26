@@ -1,9 +1,6 @@
 package org.iesalandalus.programacion.reyajedrez.modelo;
 
 import javax.naming.OperationNotSupportedException;
-import org.iesalandalus.programacion.reyajedrez.modelo.Posicion;
-import org.iesalandalus.programacion.reyajedrez.modelo.Color;
-import org.iesalandalus.programacion.reyajedrez.modelo.Direccion;
 
 public class Rey {
 
@@ -12,14 +9,17 @@ public class Rey {
     private int totalMovimientos;
 
     public Color getColor() {
+
         return color;
     }
 
     private void setColor(Color color) {
+
         this.color = color;
     }
 
     public Posicion getPosicion() {
+
         return posicion;
     }
 
@@ -42,22 +42,62 @@ public class Rey {
             this.posicion = new Posicion(8,'e');
         }
     }
+    Rey reyBlanco = new Rey(Color.BLANCO);
+    Rey reyNegro = new Rey(Color.NEGRO);
 
-    public mover (Direccion direccion){
 
-        if (direccion==null){
+    public void mover (Direccion direccion)throws IllegalArgumentException,OperationNotSupportedException {
+
+        int nuevaFila = posicion.getFila();
+        char nuevaColumna = posicion.getColumna();
+        int nuevaColumnaNumCorto = nuevaColumna + 3;
+        int nuevaColumnaNumLargo = nuevaColumna - 4;
+        // totalMovimientos =0;
+        if (direccion == null) {
             throw new IllegalArgumentException("La posición no es valida");
         }
 
-        if (direccion==Direccion.NOROESTE && posicion.equals(new Posicion(1,'a')){
-           throw new OperationNotSupportedException("Este movimiento no se puede realizar. ");
+        if (direccion == Direccion.NORTE) {
+            posicion = new Posicion(nuevaFila + 1, nuevaColumna);
+        }
+        if (direccion == Direccion.NORESTE) {
+            posicion = new Posicion(nuevaFila + 1, --nuevaColumna);
+        }
+        if (direccion == Direccion.NOROESTE) {
+            posicion = new Posicion(nuevaFila + 1, ++nuevaColumna);
+        }
+        if (direccion == Direccion.ESTE) {
+            posicion = new Posicion(nuevaFila, --nuevaColumna);
+        }
+        if (direccion == Direccion.OESTE) {
+            posicion = new Posicion(nuevaFila, ++nuevaColumna);
+        }
+        if (direccion == Direccion.SUR) {
+            posicion = new Posicion(nuevaFila - 1, nuevaColumna);
+        }
+        if (direccion == Direccion.SURESTE) {
+            posicion = new Posicion(nuevaFila - 1, --nuevaColumna);
+        }
+        if (direccion == Direccion.SUROESTE) {
+            posicion = new Posicion(nuevaFila - 1, ++nuevaColumna);
         }
 
-        else {
+        if (direccion == Direccion.ENROQUE_CORTO) {
+            posicion = new Posicion(nuevaFila, (char) nuevaColumnaNumCorto);
         }
+        if (direccion == Direccion.ENROQUE_LARGO) {
+            posicion = new Posicion(nuevaFila, (char) nuevaColumnaNumLargo);
+        }
+
+        if (nuevaFila < 1 || nuevaFila > 8 || nuevaColumna < 'a' || nuevaColumna > 'h' || nuevaColumnaNumCorto < 'a' || nuevaColumnaNumLargo > 'h') {
+            throw new OperationNotSupportedException("Este movimiento no se puede realizar. ");
+        }
+
+        if ( posicion = new Posicion(nuevaFila, nuevaColumna);){
+            totalMovimientos = totalMovimientos + 1;
+        }
+
     }
-
-
     @Override
     public String toString (){
         return "Color "+getColor()+ "Posición "+getPosicion();

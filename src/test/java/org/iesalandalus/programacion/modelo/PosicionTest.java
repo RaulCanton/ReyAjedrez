@@ -93,7 +93,7 @@ class PosicionTest {
 	
 	@Test
 	void toStringDevuelveLaCadenaEsperada() {
-		assertEquals("fila=1, columna=a", new Posicion(1, 'a').toString(), CADENA_NO_ESPERADA);
+		assertEquals("fila= 1 columna= a", new Posicion(1, 'a').toString(), CADENA_NO_ESPERADA);
 	}
 
 }

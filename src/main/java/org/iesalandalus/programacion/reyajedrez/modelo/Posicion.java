@@ -9,7 +9,7 @@ public class Posicion {
         if (fila>=1 && fila<=8)
             this.fila=fila;
         else
-            throw new IllegalArgumentException("La fila introducida no es valida");
+            throw new IllegalArgumentException("ERROR: Fila no válida.");
     }
 
     public int getFila(){
@@ -19,7 +19,7 @@ public class Posicion {
         if (columna>='a' && columna<='h')
             this.columna=columna;
         else
-            throw new IllegalArgumentException("La columna introducida no es valida");
+            throw new IllegalArgumentException("ERROR: Columna no válida.");
     }
 
     public char getColumna(){
@@ -59,7 +59,7 @@ public class Posicion {
 
 
     @Override
-    private int hashCode() {
+    public int hashCode() {
       int hash = 7;
       hash = 17 * hash + fila;
       hash = 17 * hash + columna;
@@ -69,6 +69,6 @@ public class Posicion {
     @Override
 
     public String toString(){
-        return "fila= "+ getFila()+" columna= "+getColumna();
+        return "fila= "+getFila()+" columna= "+getColumna();
     }
 }

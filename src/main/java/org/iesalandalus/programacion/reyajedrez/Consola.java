@@ -1,11 +1,16 @@
 package org.iesalandalus.programacion.reyajedrez;
 
+import org.iesalandalus.programacion.reyajedrez.modelo.Direccion;
 import org.iesalandalus.programacion.utilidades.Entrada;
+import org.iesalandalus.programacion.reyajedrez.modelo.Posicion;
+import org.iesalandalus.programacion.reyajedrez.modelo.Rey;
 
+import javax.naming.OperationNotSupportedException;
 import java.sql.SQLOutput;
 
-public class Consola {
 
+public class Consola {
+    public static Direccion direccion;
     private  Consola(){
 
     }
@@ -24,30 +29,35 @@ public class Consola {
 
             if (opcion == 1) {
                 System.out.println("Has elegido: 1 - Crear Rey por defecto.");
+                new Rey();
             }
             if (opcion == 2) {
                 System.out.println("Has elegido: 2 - Crear Rey eligiendo color.");
+                elegirColor();
             }
             if (opcion == 3) {
                 System.out.println("Has elegido: 3 - Mover.");
+                elegirDireccion();
             }
             if (opcion == 4) {
                 System.out.println("Has elegido: 4 - Salir.");
+                despedirse();
             }
         }
     }
     public static void elegirColor(String color){
-        color="rojo";
-        while (color !="Blanco" && color != "Negro") {
+
+        do {
             System.out.println("Elige un color: Blanco o Negro?:");
-            color = Entrada.cadena();
-        }
+            color = Entrada.cadena();}
+            while (color !="Blanco" && color != "Negro");
+
     }
 
     public static void mostrarMenuDirecciones(){
         System.out.println("Elige una opción para mover el rey;");
         System.out.println("1 - NORTE");
-        System.out.println("2 - NOROESTE");
+        System.out.println("2 - NORESTE");
         System.out.println("3 - ESTE");
         System.out.println("4 - SURESTE");
         System.out.println("5 - SUR");
@@ -58,16 +68,47 @@ public class Consola {
         System.out.println("10 - ENROQUE_LARGO");
     }
 
-    public static void elegirDireccion(int opcion) {
+    public void elegirDireccion(int opcion) throws OperationNotSupportedException {
+
+
         opcion = 0;
         while (opcion < 1 && opcion > 10) {
             System.out.println("Elige una opción: ");
+            opcion=Entrada.entero();
+            if (opcion==1){
+                Rey.mover(direccion.NORTE);
+            }
+            if (opcion==2){
+                mover(direccion.NORESTE);
+            }
+            if (opcion==3){
+                mover(direccion.ESTE);
+            }
+            if (opcion==4){
+                mover(direccion.SURESTE);
+            }
+            if (opcion==5){
+                mover(direccion.SUR);
+            }
+            if (opcion==6){
+                mover(direccion.SUROESTE);
+            }
+            if (opcion==7){
+                mover(direccion.OESTE);
+            }
+            if (opcion==8){
+                mover(direccion.NOROESTE);
+            }
+            if (opcion==9){
+                mover(direccion.ENROQUE_CORTO);
+            }
+            if (opcion==10){
+                mover(direccion.ENROQUE_LARGO);
+            }
         }
-
-
     }
-
     public static void despedirse(){
+
          System.out.println("Hasta pronto.");
 
     }
