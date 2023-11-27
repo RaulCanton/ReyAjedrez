@@ -36,14 +36,16 @@ public class Rey {
     public Rey (Color color){
         this.color = color;
         if (color == Color.BLANCO){
+            Rey reyBlanco = new Rey(Color.BLANCO);
             this.posicion = new Posicion(1, 'e');
         }
         if (color ==Color.NEGRO) {
+            Rey reyNegro = new Rey(Color.NEGRO);
             this.posicion = new Posicion(8,'e');
         }
     }
-    Rey reyBlanco = new Rey(Color.BLANCO);
-    Rey reyNegro = new Rey(Color.NEGRO);
+
+
 
 
     public void mover (Direccion direccion)throws IllegalArgumentException,OperationNotSupportedException {
@@ -125,9 +127,9 @@ public class Rey {
             throw new OperationNotSupportedException("Este movimiento no se puede realizar. ");
         }
 
-        if (posicion = new Posicion(posicion.getFila(), posicion.getColumna());{
+
            totalMovimientos = totalMovimientos + 1;
-        }
+
 
     }
     @Override
