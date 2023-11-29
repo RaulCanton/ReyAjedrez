@@ -1,5 +1,7 @@
 package org.iesalandalus.programacion.reyajedrez.modelo;
 
+import java.util.Objects;
+
 public class Posicion {
 
     private int fila;
@@ -16,6 +18,7 @@ public class Posicion {
         return fila;
     }
     public void setColumna (char columna){
+        Objects.requireNonNull(columna,"La columna no puede ser nula.");
         if (columna>='a' && columna<='h')
             this.columna=columna;
         else
@@ -26,12 +29,14 @@ public class Posicion {
         return columna;
     }
     public Posicion(int fila,char columna){
+
         setFila(fila);
         setColumna(columna);
 
     }
 
     public Posicion(Posicion posicion){
+        Objects.requireNonNull(posicion,"La posición no puede ser nula.");
         setFila(getFila());
         setColumna(getColumna());
     }

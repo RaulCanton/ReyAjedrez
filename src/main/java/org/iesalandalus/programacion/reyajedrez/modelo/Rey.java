@@ -1,7 +1,8 @@
 package org.iesalandalus.programacion.reyajedrez.modelo;
 
 import javax.naming.OperationNotSupportedException;
-
+import java.util.Objects;
+import org.iesalandalus.programacion.reyajedrez.Consola;
 public class Rey {
 
     private Color color;
@@ -15,7 +16,7 @@ public class Rey {
 
     private void setColor(Color color)throws IllegalArgumentException {
         if ((color != Color.BLANCO) && (color != Color.NEGRO)) {
-            throw new IllegalArgumentException("El color no es valido");
+            throw new IllegalArgumentException("El color no es valido.");
         }
         this.color = color;
     }
@@ -26,6 +27,7 @@ public class Rey {
     }
 
     private void setPosicion(Posicion posicion) {
+        Objects.requireNonNull(posicion,"La posición no puede ser nula.");
         this.posicion = posicion;
     }
 
@@ -37,27 +39,31 @@ public class Rey {
     }
 
     public Rey (Color color){
+        Objects.requireNonNull(color,"El color no puede ser nulo.");
         this.color = color;
         if (color == Color.BLANCO){
-            // Rey reyBlanco = new Rey(Color.BLANCO);
+
             this.posicion = new Posicion(1, 'e');
         }
         if (color ==Color.NEGRO) {
-           // Rey reyNegro = new Rey(Color.NEGRO);
+
             this.posicion = new Posicion(8,'e');
+        }
+        else {
+            throw new IllegalArgumentException("El color ha de ser blanco o negro.");
         }
     }
 
 
 
 
-    public void mover (Direccion direccion)throws IllegalArgumentException,OperationNotSupportedException {
+    public void mover (Direccion direccion){
 
         int nuevaFila = posicion.getFila();
         char nuevaColumna = posicion.getColumna();
-        int nuevaColumnaNumCorto = nuevaColumna + 3;
-        int nuevaColumnaNumLargo = nuevaColumna - 4;
-        // totalMovimientos =0;
+      //  int nuevaColumnaNumCorto = nuevaColumna + 3;
+       // int nuevaColumnaNumLargo = nuevaColumna - 4;
+
         if (direccion == null) {
             throw new IllegalArgumentException("La posición no es valida");
         }
@@ -87,14 +93,14 @@ public class Rey {
             posicion = new Posicion(nuevaFila - 1, ++nuevaColumna);
         }
 
-        if (direccion == Direccion.ENROQUE_CORTO) {
-            if (totalMovimientos == 0) {
+        if (totalMovimientos == 0) {
+            if  (direccion == Direccion.ENROQUE_CORTO){
                 if (color == Color.BLANCO) {
                     posicion = new Posicion(1, 'g');
                 }
-            } else {
-                throw new OperationNotSupportedException("El enroque no valido");
-            }
+            } //else {
+               // throw new OperationNotSupportedException("El enroque no valido");
+            //}
         }
 
         if (direccion == Direccion.ENROQUE_LARGO) {
@@ -102,19 +108,19 @@ public class Rey {
                 if (color == Color.BLANCO) {
                     posicion = new Posicion(1, 'c');
                 }
-            } else {
-            throw new OperationNotSupportedException("El enroque no valido");
-                }
+            } //else {
+            //throw new OperationNotSupportedException("El enroque no valido");
+            //    }
         }
 
-        if (direccion == Direccion.ENROQUE_CORTO) {
-            if (totalMovimientos == 0) {
+        if (totalMovimientos == 0) {
+            if  (direccion == Direccion.ENROQUE_CORTO){
                 if (color == Color.NEGRO) {
                     posicion = new Posicion(8, 'g');
                 }
-            } else {
-                throw new OperationNotSupportedException("El enroque no valido");
-            }
+            }// else {
+                //throw new OperationNotSupportedException("El enroque no valido");
+           // }
         }
 
         if (direccion == Direccion.ENROQUE_LARGO) {
@@ -122,22 +128,20 @@ public class Rey {
                 if (color == Color.NEGRO) {
                     posicion = new Posicion(8, 'c');
                 }
-            } else {
-                throw new OperationNotSupportedException("El enroque no valido");
-            }
+            } //else {
+               // throw new OperationNotSupportedException("El enroque no valido");
+          ///  }
         }
-        if (nuevaFila < 1 || nuevaFila > 8 || nuevaColumna < 'a' || nuevaColumna > 'h' || nuevaColumnaNumCorto < 'a' || nuevaColumnaNumLargo > 'h') {
-            throw new OperationNotSupportedException("Este movimiento no se puede realizar. ");
-        }
-
-
-           totalMovimientos = totalMovimientos + 1;
+       // if (nuevaFila < 1 || nuevaFila > 8 || nuevaColumna < 'a' || nuevaColumna > 'h') {
+            //throw new OperationNotSupportedException("Este movimiento no se puede realizar. ");
+       // }
+        totalMovimientos = totalMovimientos + 1;
 
 
     }
     @Override
     public String toString (){
-        return "Color "+getColor()+ "Posición "+getPosicion();
+        return "Color "+getColor()+ " Posición "+getPosicion();
     }
 
 }

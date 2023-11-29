@@ -54,20 +54,20 @@ public class Consola {
 
 
     public static Color elegirColor() {
-    Color color = null;
-    String opcion;
+    Color color= Color.BLANCO;
+    int opcion;
         do {
-            System.out.println("Elige un color: Blanco o Negro?:");
-            System.out.println("Elige un color: Blanco :");
-            System.out.println("Elige un color: Negro:");
-            opcion = Entrada.cadena();
+            System.out.println("Elige un color:");
+            System.out.println("1.- Blanco");
+            System.out.println("2.- Negro");
+            opcion = Entrada.entero();
         }
 
-        while (opcion != "Blanco" && opcion != "Negro");
-        if (opcion == "Blanco"){
+        while (opcion < 1 && opcion >2);
+        if (opcion == 1){
             color = Color.BLANCO;
         }
-        if (opcion == "Negro"){
+        if (opcion == 2){
             color = Color.NEGRO;
         }
         return color;
@@ -93,42 +93,42 @@ public class Consola {
         //Hacer un swich
     public static Direccion elegirDireccion() {
             int opcion;
-        do {
-            System.out.println("Elige una opción: ");
+       // do {
+            // System.out.println("Elige una opción: ");
             opcion = Entrada.entero();
 
             if (opcion == 1) {
-                return direccion.NORTE;
+                 direccion=direccion.NORTE;
             }
             if (opcion == 2) {
-                return direccion.NORESTE;
+                 direccion=direccion.NORESTE;
             }
             if (opcion == 3) {
-                return (direccion.ESTE);
+                 direccion=direccion.ESTE;
             }
             if (opcion == 4) {
-                return (direccion.SURESTE);
+                 direccion=direccion.SURESTE;
             }
             if (opcion == 5) {
-                return (direccion.SUR);
+                 direccion=direccion.SUR;
             }
             if (opcion == 6) {
-                return (direccion.SUROESTE);
+                 direccion=direccion.SUROESTE;
             }
             if (opcion == 7) {
-                return (direccion.OESTE);
+                 direccion=direccion.OESTE;
             }
             if (opcion == 8) {
-                return (direccion.NOROESTE);
+                 direccion=direccion.NOROESTE;
             }
             if (opcion == 9) {
-                return (direccion.ENROQUE_CORTO);
+                 direccion=direccion.ENROQUE_CORTO;
             }
             if (opcion == 10) {
-                return (direccion.ENROQUE_LARGO);
+                 direccion=direccion.ENROQUE_LARGO;
             }
-        } while (opcion < 1 || opcion > 10);
-        return direccion;
+      //  } while (opcion < 1 && opcion > 10);
+       return direccion;
     }
 
     public static void despedirse(){

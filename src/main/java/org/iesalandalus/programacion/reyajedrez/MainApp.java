@@ -12,13 +12,15 @@ public class MainApp {
     static Rey rey;
 
     public static void main(String[] args) {
-
-       //do
+        int despedirse;
+        //despedirse=ejecutarOpcion(elegirOpcionMenu());
+       do {
            // mostrarMenuDirecciones();
-            mostrarMenu();
-
+           mostrarMenu();
+           despedirse=ejecutarOpcion(elegirOpcionMenu());
+           // ejecutarOpcion(elegirOpcionMenu());
            //  elegirDireccion();
-        //{
+           //{
             /*try
             {
                 //llamas al resto de metodos
@@ -26,35 +28,51 @@ public class MainApp {
             catch(Exception e)
             {
                 // muestras los errores
-            }
-        }while();*/
+            }*/
+       }while((despedirse != 4));
     }
 
     private static int ejecutarOpcion(int opcion) {
 
 
-
-            opcion = elegirOpcionMenu();
-            if (opcion == 1) {
-                System.out.println("Has elegido: 1 - Crear Rey por defecto.");
-
+        switch (opcion){
+            case 1:
+                System.out.println("Has elegido: 1 - Crear Rey por defecto. Rey Blanco en posición 1-e");
                 crearReyDefecto();
-            }
-            if (opcion == 2) {
+                mostrarRey();
+                return opcion;
+
+
+            case 2:
                 System.out.println("Has elegido: 2 - Crear Rey eligiendo color.");
                 elegirColor();
                 crearReyColor();
-            }
-            if (opcion == 3) {
+                mostrarRey();
+                return opcion;
+
+
+            case 3:
                 System.out.println("Has elegido: 3 - Mover.");
-                elegirDireccion();
+                //mostrarMenuDirecciones();
+              //  elegirDireccion();
+                crearReyDefecto();
                 mover();
-            }
-            if (opcion == 4) {
+
+                mostrarRey();
+                return opcion;
+
+
+            case 4:
                 System.out.println("Has elegido: 4 - Salir.");
                 Consola.despedirse();
-            }
-        return opcion;
+                return opcion;
+
+
+            default:
+                throw new IllegalArgumentException ("La opción no es correcta.");
+
+        }
+
     }
 
     private static void crearReyDefecto(){
@@ -68,11 +86,13 @@ public class MainApp {
 
     private static void mover () {
         mostrarMenuDirecciones();
-        elegirDireccion();
+        //elegirDireccion();
+        rey.mover(elegirDireccion());
+
     }
 
     private static void mostrarRey () {
-        System.out.println("Impreimmo el rey"+rey);
+        System.out.println("Imprimmo el rey: "+rey);
 
     }
 
