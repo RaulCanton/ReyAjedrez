@@ -1,6 +1,7 @@
 package org.iesalandalus.programacion.reyajedrez;
 
 import org.iesalandalus.programacion.reyajedrez.modelo.Color;
+import org.iesalandalus.programacion.reyajedrez.modelo.Direccion;
 import org.iesalandalus.programacion.reyajedrez.modelo.Rey;
 
 import static org.iesalandalus.programacion.reyajedrez.Consola.*;
@@ -12,9 +13,13 @@ public class MainApp {
 
     public static void main(String[] args) {
 
-        do
-        {
-            try
+       //do
+           // mostrarMenuDirecciones();
+            mostrarMenu();
+
+           //  elegirDireccion();
+        //{
+            /*try
             {
                 //llamas al resto de metodos
             }
@@ -22,14 +27,14 @@ public class MainApp {
             {
                 // muestras los errores
             }
-        }while();
+        }while();*/
     }
 
     private static int ejecutarOpcion(int opcion) {
 
 
-            mostrarMenu();
-            elegirOpcionMenu(opcion);
+
+            opcion = elegirOpcionMenu();
             if (opcion == 1) {
                 System.out.println("Has elegido: 1 - Crear Rey por defecto.");
 
@@ -51,19 +56,15 @@ public class MainApp {
             }
         return opcion;
     }
-    private static void crearReyDefecto () {
+
+    private static void crearReyDefecto(){
         rey = new Rey();
     }
 
     private static void crearReyColor () {
-       String color = elegirColor(" ");
-        if (color == 'Blanco'){
-            rey = new Rey();
-        }
-        if (color == 'Negro'){
-            rey = new Rey(Color.NEGRO);
-        }
+           rey = new Rey(elegirColor());
     }
+
 
     private static void mover () {
         mostrarMenuDirecciones();
@@ -71,7 +72,7 @@ public class MainApp {
     }
 
     private static void mostrarRey () {
-        Rey.toString();
+        System.out.println("Impreimmo el rey"+rey);
 
     }
 

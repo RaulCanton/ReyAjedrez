@@ -13,8 +13,10 @@ public class Rey {
         return color;
     }
 
-    private void setColor(Color color) {
-
+    private void setColor(Color color)throws IllegalArgumentException {
+        if ((color != Color.BLANCO) && (color != Color.NEGRO)) {
+            throw new IllegalArgumentException("El color no es valido");
+        }
         this.color = color;
     }
 
@@ -30,17 +32,18 @@ public class Rey {
     public Rey (){
       this.color = Color.BLANCO;
       this.posicion = new Posicion(1,'e');
+      this.totalMovimientos =0;
 
     }
 
     public Rey (Color color){
         this.color = color;
         if (color == Color.BLANCO){
-            Rey reyBlanco = new Rey(Color.BLANCO);
+            // Rey reyBlanco = new Rey(Color.BLANCO);
             this.posicion = new Posicion(1, 'e');
         }
         if (color ==Color.NEGRO) {
-            Rey reyNegro = new Rey(Color.NEGRO);
+           // Rey reyNegro = new Rey(Color.NEGRO);
             this.posicion = new Posicion(8,'e');
         }
     }

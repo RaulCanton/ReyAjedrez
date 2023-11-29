@@ -2,7 +2,7 @@ package org.iesalandalus.programacion.reyajedrez;
 
 import org.iesalandalus.programacion.reyajedrez.modelo.Direccion;
 import org.iesalandalus.programacion.utilidades.Entrada;
-import org.iesalandalus.programacion.reyajedrez.modelo.Posicion;
+import org.iesalandalus.programacion.reyajedrez.modelo.Color;
 import org.iesalandalus.programacion.reyajedrez.modelo.Rey;
 
 import javax.naming.OperationNotSupportedException;
@@ -23,15 +23,17 @@ public class Consola {
         System.out.println("4 - Salir.");
     }
 
-    public static int elegirOpcionMenu(int opcion) {
-
+    public static int elegirOpcionMenu() {
+        int opcion;
         do {
             System.out.println("Elige una opción del menú.");
             opcion = Entrada.entero();
-            return opcion;
+
         }
-        while (opcion < 1 && opcion > 4);
+        while (opcion < 1 || opcion > 4);
+        return opcion;
     }
+
            // if (opcion == 1) {
              //   System.out.println("Has elegido: 1 - Crear Rey por defecto.");
                 // new Rey();
@@ -51,15 +53,23 @@ public class Consola {
 
 
 
-    public static String elegirColor(String color) {
-
+    public static Color elegirColor() {
+    Color color = null;
+    String opcion;
         do {
             System.out.println("Elige un color: Blanco o Negro?:");
-            color = Entrada.cadena();
-
+            System.out.println("Elige un color: Blanco :");
+            System.out.println("Elige un color: Negro:");
+            opcion = Entrada.cadena();
         }
-        while (color != "Blanco" && color != "Negro");
 
+        while (opcion != "Blanco" && opcion != "Negro");
+        if (opcion == "Blanco"){
+            color = Color.BLANCO;
+        }
+        if (opcion == "Negro"){
+            color = Color.NEGRO;
+        }
         return color;
     }
 
@@ -80,17 +90,18 @@ public class Consola {
         System.out.println("9 - ENROQUE_CORTO");
         System.out.println("10 - ENROQUE_LARGO");
     }
-
-    public static Direccion elegirDireccion(int opcion) throws OperationNotSupportedException {
-
+        //Hacer un swich
+    public static Direccion elegirDireccion() {
+            int opcion;
         do {
             System.out.println("Elige una opción: ");
             opcion = Entrada.entero();
+
             if (opcion == 1) {
                 return direccion.NORTE;
             }
             if (opcion == 2) {
-                return (direccion.NORESTE);
+                return direccion.NORESTE;
             }
             if (opcion == 3) {
                 return (direccion.ESTE);
@@ -116,8 +127,10 @@ public class Consola {
             if (opcion == 10) {
                 return (direccion.ENROQUE_LARGO);
             }
-        } while (opcion < 1 && opcion > 10);
+        } while (opcion < 1 || opcion > 10);
+        return direccion;
     }
+
     public static void despedirse(){
 
          System.out.println("Hasta pronto.");
