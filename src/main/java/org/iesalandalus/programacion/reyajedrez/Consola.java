@@ -34,25 +34,6 @@ public class Consola {
         return opcion;
     }
 
-           // if (opcion == 1) {
-             //   System.out.println("Has elegido: 1 - Crear Rey por defecto.");
-                // new Rey();
-           // }
-          //  if (opcion == 2) {
-             //   System.out.println("Has elegido: 2 - Crear Rey eligiendo color.");
-                //elegirColor();
-            //}
-          //  if (opcion == 3) {
-            //    System.out.println("Has elegido: 3 - Mover.");
-                //elegirDireccion();
-          //  }
-           // if (opcion == 4) {
-              //  System.out.println("Has elegido: 4 - Salir.");
-                // despedirse();
-            //}
-
-
-
     public static Color elegirColor() {
     Color color= Color.BLANCO;
     int opcion;
@@ -73,10 +54,6 @@ public class Consola {
         return color;
     }
 
-
-
-
-
     public static void mostrarMenuDirecciones(){
         System.out.println("Elige una opción para mover el rey;");
         System.out.println("1 - NORTE");
@@ -92,42 +69,47 @@ public class Consola {
     }
         //Hacer un swich
     public static Direccion elegirDireccion() {
-            int opcion;
-       // do {
-            // System.out.println("Elige una opción: ");
-            opcion = Entrada.entero();
+        int opcion;
+        opcion = Entrada.entero();
 
-            if (opcion == 1) {
-                 direccion=direccion.NORTE;
-            }
-            if (opcion == 2) {
-                 direccion=direccion.NORESTE;
-            }
-            if (opcion == 3) {
-                 direccion=direccion.ESTE;
-            }
-            if (opcion == 4) {
-                 direccion=direccion.SURESTE;
-            }
-            if (opcion == 5) {
-                 direccion=direccion.SUR;
-            }
-            if (opcion == 6) {
-                 direccion=direccion.SUROESTE;
-            }
-            if (opcion == 7) {
-                 direccion=direccion.OESTE;
-            }
-            if (opcion == 8) {
-                 direccion=direccion.NOROESTE;
-            }
-            if (opcion == 9) {
-                 direccion=direccion.ENROQUE_CORTO;
-            }
-            if (opcion == 10) {
-                 direccion=direccion.ENROQUE_LARGO;
-            }
-      //  } while (opcion < 1 && opcion > 10);
+        while (opcion < 1 || opcion > 10) {
+            System.out.println("*** La opción elegida no es valida. ***");
+            mostrarMenuDirecciones();
+            opcion = Entrada.entero();
+        }
+            // Asigno la dirección. Con el if funcionaba también (pero menos eficiente jeje).
+
+        switch (opcion) {
+            case 1:
+                direccion = direccion.NORTE;
+                break;
+            case 2:
+                direccion = direccion.NORESTE;
+                break;
+            case 3:
+                direccion = direccion.ESTE;
+                break;
+            case 4:
+                direccion = direccion.SURESTE;
+            case 5:
+                direccion = direccion.SUR;
+                break;
+            case 6:
+                direccion = direccion.SUROESTE;
+                break;
+            case 7:
+                direccion = direccion.OESTE;
+                break;
+            case 8:
+                direccion = direccion.NOROESTE;
+                break;
+            case 9:
+                direccion = direccion.ENROQUE_CORTO;
+                break;
+            case 10:
+                direccion = direccion.ENROQUE_LARGO;
+                break;
+        }
        return direccion;
     }
 

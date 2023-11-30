@@ -42,99 +42,96 @@ public class Rey {
         Objects.requireNonNull(color,"El color no puede ser nulo.");
         this.color = color;
         if (color == Color.BLANCO){
-
+            color = Color.BLANCO;
             this.posicion = new Posicion(1, 'e');
         }
         if (color ==Color.NEGRO) {
-
+            color = Color.NEGRO;
             this.posicion = new Posicion(8,'e');
         }
-        else {
-            throw new IllegalArgumentException("El color ha de ser blanco o negro.");
-        }
+
     }
 
 
 
 
-    public void mover (Direccion direccion){
+    public void mover (Direccion direccion) throws OperationNotSupportedException {
 
         int nuevaFila = posicion.getFila();
         char nuevaColumna = posicion.getColumna();
-      //  int nuevaColumnaNumCorto = nuevaColumna + 3;
-       // int nuevaColumnaNumLargo = nuevaColumna - 4;
-
+            // Al final mueve la pieza......
         if (direccion == null) {
             throw new IllegalArgumentException("La posición no es valida");
-        }
+        }else {
 
-        if (direccion == Direccion.NORTE) {
-            posicion = new Posicion(nuevaFila + 1, nuevaColumna);
-        }
-        if (direccion == Direccion.NORESTE) {
-            posicion = new Posicion(nuevaFila + 1, --nuevaColumna);
-        }
-        if (direccion == Direccion.NOROESTE) {
-            posicion = new Posicion(nuevaFila + 1, ++nuevaColumna);
-        }
-        if (direccion == Direccion.ESTE) {
-            posicion = new Posicion(nuevaFila, --nuevaColumna);
-        }
-        if (direccion == Direccion.OESTE) {
-            posicion = new Posicion(nuevaFila, ++nuevaColumna);
-        }
-        if (direccion == Direccion.SUR) {
-            posicion = new Posicion(nuevaFila - 1, nuevaColumna);
-        }
-        if (direccion == Direccion.SURESTE) {
-            posicion = new Posicion(nuevaFila - 1, --nuevaColumna);
-        }
-        if (direccion == Direccion.SUROESTE) {
-            posicion = new Posicion(nuevaFila - 1, ++nuevaColumna);
-        }
+            if (direccion == Direccion.NORTE) {
+                posicion = new Posicion(nuevaFila + 1, nuevaColumna);
+            }
+            if (direccion == Direccion.NORESTE) {
+                posicion = new Posicion(nuevaFila + 1, --nuevaColumna);
+            }
+            if (direccion == Direccion.NOROESTE) {
+                posicion = new Posicion(nuevaFila + 1, ++nuevaColumna);
+            }
+            if (direccion == Direccion.ESTE) {
+                posicion = new Posicion(nuevaFila, --nuevaColumna);
+            }
+            if (direccion == Direccion.OESTE) {
+                posicion = new Posicion(nuevaFila, ++nuevaColumna);
+            }
+            if (direccion == Direccion.SUR) {
+                posicion = new Posicion(nuevaFila - 1, nuevaColumna);
+            }
+            if (direccion == Direccion.SURESTE) {
+                posicion = new Posicion(nuevaFila - 1, --nuevaColumna);
+            }
+            if (direccion == Direccion.SUROESTE) {
+                posicion = new Posicion(nuevaFila - 1, ++nuevaColumna);
+            }
 
-        if (totalMovimientos == 0) {
-            if  (direccion == Direccion.ENROQUE_CORTO){
-                if (color == Color.BLANCO) {
-                    posicion = new Posicion(1, 'g');
+            if (direccion == Direccion.ENROQUE_CORTO) {
+                if  (totalMovimientos == 0){
+                    if (color == Color.BLANCO) {
+                        posicion = new Posicion(1, 'g');
+                    }
+                } else {
+                    throw new OperationNotSupportedException ("El enroque no valido");
                 }
-            } //else {
-               // throw new OperationNotSupportedException("El enroque no valido");
-            //}
-        }
+            }
 
-        if (direccion == Direccion.ENROQUE_LARGO) {
-            if (totalMovimientos == 0){
-                if (color == Color.BLANCO) {
-                    posicion = new Posicion(1, 'c');
-                }
-            } //else {
-            //throw new OperationNotSupportedException("El enroque no valido");
-            //    }
-        }
+            if (direccion == Direccion.ENROQUE_LARGO) {
+                if (totalMovimientos == 0){
+                    if (color == Color.BLANCO) {
+                        posicion = new Posicion(1, 'c');
+                    }
+                } else {
+                    throw new OperationNotSupportedException("El enroque no valido");
+                   }
+            }
 
-        if (totalMovimientos == 0) {
-            if  (direccion == Direccion.ENROQUE_CORTO){
-                if (color == Color.NEGRO) {
-                    posicion = new Posicion(8, 'g');
+            if (direccion == Direccion.ENROQUE_CORTO) {
+                if (totalMovimientos == 0) {
+                    if (color == Color.NEGRO) {
+                        posicion = new Posicion(8, 'g');
+                    }
+                } else {
+                    throw new OperationNotSupportedException("El enroque no valido");
                 }
-            }// else {
-                //throw new OperationNotSupportedException("El enroque no valido");
-           // }
-        }
+            }
 
-        if (direccion == Direccion.ENROQUE_LARGO) {
-            if (totalMovimientos == 0) {
-                if (color == Color.NEGRO) {
-                    posicion = new Posicion(8, 'c');
+            if (direccion == Direccion.ENROQUE_LARGO) {
+                if (totalMovimientos == 0) {
+                    if (color == Color.NEGRO) {
+                        posicion = new Posicion(8, 'c');
+                    }
+                } else {
+                    throw new OperationNotSupportedException("El enroque no valido");
                 }
-            } //else {
-               // throw new OperationNotSupportedException("El enroque no valido");
-          ///  }
+            }
+            if (nuevaFila < 1 || nuevaFila > 8 || nuevaColumna < 'a' || nuevaColumna > 'h') {
+                throw new OperationNotSupportedException("Este movimiento no se puede realizar. ");
+            }
         }
-       // if (nuevaFila < 1 || nuevaFila > 8 || nuevaColumna < 'a' || nuevaColumna > 'h') {
-            //throw new OperationNotSupportedException("Este movimiento no se puede realizar. ");
-       // }
         totalMovimientos = totalMovimientos + 1;
 
 
